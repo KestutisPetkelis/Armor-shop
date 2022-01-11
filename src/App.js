@@ -2,7 +2,7 @@ import React from 'react';
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom'
 // import { useRef } from 'react';
 import { useState } from 'react';
-import { useEffect } from 'react';
+
 import './App.css';
 
 import Shop from './components/Shop';
@@ -10,7 +10,7 @@ import Inventory from './components/Inventory';
 
 import { MyContext } from './contexts/MyContext';
 import {ItemContext} from './contexts/ItemContext';
-import Equipment from './pages/Equipment';
+
 
 function App() {
   const divStyle = {
@@ -27,13 +27,13 @@ function App() {
 
   const [inventory, setInventory] = useState([])
   const [equipment, setEquipment] = useState({
-    upper: "https://lineage.pmfun.com/data/img/armor_t88_u_i00_0.png",
+    upper: "upper",
     lower:"lower",
     hat:"hat",
     gloves: "gloves",
     boots:"boots"
   })
-  // const [someSign, setSomeSign] =useState()
+  
 
   const clothes = [
     {
@@ -140,7 +140,7 @@ function App() {
     
     const item = inventory.find(x=>x.title===arg)
     console.log("click set on !", arg, " keys", item.type)
-    const clothesOn = equipment
+    const clothesOn = {...equipment}    // spread galima naudoti ir objektui
 
     if (item.type==="hat"){
       clothesOn.hat=item.img
@@ -163,23 +163,11 @@ function App() {
       
     }
 
-    
-
     setEquipment(clothesOn)
-    
-
+ 
     console.log("uzdeta", clothesOn)
 
-  
   }
-
-  useEffect (() =>{                   // 
-    
-    
-  },[equipment]) 
-
-
-
 
   return (
     <div className="App" style={divStyle}>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+
 import { ItemContext } from '../contexts/ItemContext';
 
 const Warehouse = () => {
@@ -16,20 +16,14 @@ const Warehouse = () => {
     };
 
     const {inventory, setItemOn}= useContext(ItemContext)
-    const navigate = useNavigate()
-
-    const goToInventory = ()=>{
-        console.log("Navigate?")
-        // navigate("/shop")
-        // navigate("/inventory")
-    }
+    
     // console.log(inventory)
 
     return (
         <div style={divStyle} className='flex4'> 
             <h4>Warehouse</h4>
             {inventory.map((x,index) => 
-            <div  onClick = {()=>{setItemOn(x.title); goToInventory()}} className='armorcard bg-blue ali-center' key={index}>
+            <div  onClick = {()=>setItemOn(x.title)} className='armorcard bg-blue ali-center' key={index}>
                 <img src={x.img} alt=''/>
                 <span>{x.title}</span>
                 <span>{x.type}</span>
