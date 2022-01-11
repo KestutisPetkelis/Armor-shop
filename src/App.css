@@ -36,3 +36,104 @@
     transform: rotate(360deg);
   }
 }
+/* My classes */
+.d-flex{
+  display: flex;
+}
+.column{
+  flex-direction: column;
+}
+.column-reverse{
+  flex-direction: column-reverse;
+}
+.f-wrap{
+  flex-wrap: wrap;
+}
+.flex1{
+  flex: 1;
+}
+.flex2{
+  flex: 2;
+}
+.flex3{
+  flex: 3;
+}
+.flex4{
+  flex: 4;
+}
+.just-center{
+  justify-content: center;
+}
+.just-between{
+  justify-content: space-between;
+}
+.just-evenly{
+  justify-content: space-evenly;
+}
+.just-start{
+  justify-content: start;
+}
+.just-end{
+  justify-content: end;
+}
+.just-start{
+  justify-content: flex-start;
+}
+.ali-center{
+  align-items: center;
+}
+.ali-start{
+  align-content: flex-start;
+}
+.d-none{
+  display: none;
+}
+.bg-blue{
+  background-color: rgb(105, 186, 212);
+}
+.bg-rose{
+  background-color: rgb(184, 88, 88);
+}
+.sticky{
+  position:sticky;
+  top: 0;
+  background-color: aliceblue;
+}
+
+/* Custom classes */
+.armorcard{
+  border: 2px red solid;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  cursor: pointer;
+}
+.armorcard:hover{
+  border: 2px brown solid;
+  background-color: lightgreen;
+}
+.armorcard span{
+  padding: 0 40px;
+  min-width: 220px;
+  text-align: left;
+}
+.equip{
+  width: 80px;
+  height: 80px;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  border: solid 2px green;
+  background-color: grey;
+  cursor: pointer;
+}
+.equip:hover {
+  border: solid 2px brown;
+  background-color: lightgreen;
+}
+.equip p{
+  margin: 5px 0;
+  font-size: 10px;
+  overflow-wrap: break-word;
+}
