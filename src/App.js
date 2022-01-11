@@ -141,39 +141,44 @@ function App() {
     const item = inventory.find(x=>x.title===arg)
     console.log("click set on !", arg, " keys", item.type)
     const clothesOn = {...equipment}    // spread galima naudoti ir objektui
+    const removedEquipment = inventory.filter(x => x.title!==item.title) // isimam is masyvo uzdedama daikta
 
-    if (item.type==="hat"){
-      clothesOn.hat=item.img
-      
-    }   
-    if (item.type==="gloves") {
-      clothesOn.gloves=item.img
-      
-    }
-    if (item.type==="upper") {
-      clothesOn.upper=item.img
-      
-    }
-    if (item.type==="lower") {
-      clothesOn.lower=item.img
-      
-    }
-    if (item.type==="boots") {
-      clothesOn.boots=item.img
-      
-    }
-
-    setEquipment(clothesOn)
- 
+    if (item.type==="hat") clothesOn.hat=item.img
+    if (item.type==="gloves") clothesOn.gloves=item.img
+    if (item.type==="upper") clothesOn.upper=item.img
+    if (item.type==="lower") clothesOn.lower=item.img
+    if (item.type==="boots") clothesOn.boots=item.img
+    setEquipment(clothesOn)         // atnaujinam inventoriaus daiktus
+    setInventory(removedEquipment)  // atnaujinam sandelio daiktus
     console.log("uzdeta", clothesOn)
-
   }
+
+  const removeItem=(arg)=>{
+   
+    console.log("Remove item", arg)
+    const clothesOff = {...equipment}
+       
+    const addWarehouse = clothes.find(x => x.img===clothesOff[arg])
+    if(addWarehouse){
+      console.log(addWarehouse, clothesOff[arg])
+      if (arg==="hat") clothesOff.hat=""
+      if (arg==="gloves") clothesOff.gloves=""
+      if (arg==="upper") clothesOff.upper=""
+      if (arg==="lower") clothesOff.lower=""
+      if (arg==="boots") clothesOff.boots=""
+      setEquipment(clothesOff)
+      setInventory([...inventory, addWarehouse])
+      console.log("nuimta", clothesOff)
+    }
+  }
+
+
 
   return (
     <div className="App" style={divStyle}>
       <BrowserRouter>
         <MyContext.Provider value={{clothes, buyItem}}>
-          <ItemContext.Provider value ={{inventory,equipment, setItemOn}}>
+          <ItemContext.Provider value ={{inventory,equipment, setItemOn, removeItem}}>
             <div className='d-flex ali-center just-evenly sticky'>
               <h4><Link to="/shop"> Shop</Link>  </h4>
               <h4><Link to="/inventory"> Inventory </Link>  </h4>

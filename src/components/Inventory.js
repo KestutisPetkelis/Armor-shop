@@ -4,7 +4,7 @@ import Equipment from '../pages/Equipment';
 
 const Inventory = () => {
     const divStyle = {
-        width: "100%", 
+        width: "90%", 
         minHeight: "400px",
         border: "1px solid blue",
         marginTop: "0px",
