@@ -4,7 +4,7 @@ import {BrowserRouter, Routes, Route, Link} from 'react-router-dom'
 import { useState } from 'react';
 
 import './App.css';
-
+import Home from './components/Home';
 import Shop from './components/Shop';
 import Inventory from './components/Inventory';
 
@@ -209,10 +209,9 @@ function App() {
     console.log("click on SELL")
     const item = [...inventory]
     setMoney(money+item[index].price/2)
-    // console.log(item[index], index)
     const removedEquipment = inventory.filter((x, i) => i !== index)
     setInventory(removedEquipment)
-    // setMoney(money+item.price/2)
+    
   }
 
   return (
@@ -226,6 +225,7 @@ function App() {
             </div>
             
             <Routes>
+              <Route path="/" element={<Home/>}></Route>
               <Route path="/shop" element={<Shop money={money}/>}></Route>
               <Route path="/inventory" element={<Inventory money={money}/>} ></Route>
             </Routes>

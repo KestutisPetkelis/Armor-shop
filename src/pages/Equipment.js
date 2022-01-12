@@ -21,7 +21,7 @@ const Equipment = () => {
     return (
         <div style={divStyle} className='flex1 equipmentBase'>
            <h4>Equipment</h4>
-           <div className='equip' onClick={()=>removeItem("hat", equipment.hat)}> <p>Hat</p>  <img src={equipment.hat} alt='Empty slot'></img></div>
+           <div className='equip' onClick={()=>removeItem("hat")}> <p>Hat</p>  <img src={equipment.hat} alt='Empty slot'></img></div>
            <div className='equip' onClick={()=>removeItem("upper")}> <p>Upper</p> <img src={equipment.upper} alt='Empty slot'></img></div>
            <div className='equip' onClick={()=>removeItem("lower")}> <p>Lower</p>  <img src={equipment.lower} alt='Empty slot'></img></div>
            <div className='equip' onClick={()=>removeItem("gloves")}> <p>Gloves</p>  <img src={equipment.gloves} alt='Empty slot'></img></div>
