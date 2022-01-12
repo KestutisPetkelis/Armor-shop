@@ -29,7 +29,7 @@ const Warehouse = () => {
                 <span>{x.type}</span>
                 <span>{x.grade} grade armor</span>
                 <span>Sell price: {x.price/2}</span>
-                <button onClick= {()=>sellItem()}>Sell</button>
+                <button onClick= {()=>sellItem(index)}>Sell</button>
             </div>
            )} 
         </div>

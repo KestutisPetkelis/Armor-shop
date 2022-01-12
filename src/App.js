@@ -147,8 +147,14 @@ function App() {
     
     const item = clothes.find(x=>x.title===arg)
     console.log("click buy", arg, item)
-    setInventory([...inventory, item])
-    console.log(inventory)
+    if (money >0){
+      setMoney(money-item.price)
+      setInventory([...inventory, item])
+      console.log(inventory) 
+    }else{
+      alert ("Do not be so poor...")
+    }
+    
   }
 
   const setItemOn = (arg, index) =>{
@@ -160,12 +166,12 @@ function App() {
     //const removedEquipment = inventory.filter(x => x.title!==item.title) // isimam is masyvo visus daiktus su tuo pavadinimu - nelabai gerai....
    
     const removedEquipment = inventory.filter((x, i) => i !== index) // isimam tik 1 elementa
-    const addWarehouse = clothes.find(x => x.img===clothesOn[item.type])
+    const addWarehouse = clothes.find(x => x.img===clothesOn[item.type]) // jei tuscia, tai reiksme "undefined"
     console.log("warehouse ON", addWarehouse, removedEquipment)
-    if(addWarehouse){       // atnaujinam sandelio daiktus
-      setInventory([...removedEquipment, addWarehouse]) 
+    if(addWarehouse){           // atnaujinam sandelio daiktus
+      setInventory([...removedEquipment, addWarehouse]) // kai uzdedam i tuscia vieta
     }else{
-      setInventory(removedEquipment)
+      setInventory(removedEquipment)    // kai pakieciam vietoje seno
     }
 
 
@@ -184,7 +190,7 @@ function App() {
     console.log("Remove item", arg)
     const clothesOff = {...equipment}
        
-    const addWarehouse = clothes.find(x => x.img===clothesOff[arg])
+    const addWarehouse = clothes.find(x => x.img===clothesOff[arg]) // jei tuscia, tai reiksme "undefined"
     console.log("What's up, doc?", addWarehouse)
     if(addWarehouse){
       console.log(addWarehouse, clothesOff[arg])
@@ -199,8 +205,14 @@ function App() {
     }
   }
 
-  const sellItem=()=>{
+  const sellItem=(index)=>{
     console.log("click on SELL")
+    const item = [...inventory]
+    setMoney(money+item[index].price/2)
+    // console.log(item[index], index)
+    const removedEquipment = inventory.filter((x, i) => i !== index)
+    setInventory(removedEquipment)
+    // setMoney(money+item.price/2)
   }
 
   return (
