@@ -23,7 +23,7 @@ const Warehouse = () => {
         <div style={divStyle} className='flex4'> 
             <h4>Warehouse</h4>
             {inventory.map((x,index) => 
-            <div  onClick = {()=>setItemOn(x.title)} className='armorcard bg-blue ali-center' key={index}>
+            <div  onClick = {()=>setItemOn(x.title, index)} className='armorcard bg-blue ali-center' key={index}>
                 <img src={x.img} alt=''/>
                 <span>{x.title}</span>
                 <span>{x.type}</span>

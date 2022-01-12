@@ -79,7 +79,7 @@ function App() {
       grade: "A"
     },
     {
-      img: "https://lineage.pmfun.com/data/img/armor_helmet_i00_0.png",
+      img: "https://lineage.pmfun.com/data/img/armor_helmet_i02_0.png",
       title: "Dark Crystal Helmet",
       type: "hat",
       grade: "A"
@@ -136,12 +136,23 @@ function App() {
     console.log(inventory)
   }
 
-  const setItemOn = (arg) =>{
-    
+  const setItemOn = (arg, index) =>{
+
     const item = inventory.find(x=>x.title===arg)
     console.log("click set on !", arg, " keys", item.type)
     const clothesOn = {...equipment}    // spread galima naudoti ir objektui
-    const removedEquipment = inventory.filter(x => x.title!==item.title) // isimam is masyvo uzdedama daikta
+    
+    //const removedEquipment = inventory.filter(x => x.title!==item.title) // isimam is masyvo visus daiktus su tuo pavadinimu - nelabai gerai....
+   
+    const removedEquipment = inventory.filter((x, i) => i !== index) // isimam tik 1 elementa
+    const addWarehouse = clothes.find(x => x.img===clothesOn[item.type])
+    console.log("warehouse ON", addWarehouse, removedEquipment)
+    if(addWarehouse){       // atnaujinam sandelio daiktus
+      setInventory([...removedEquipment, addWarehouse]) 
+    }else{
+      setInventory(removedEquipment)
+    }
+
 
     if (item.type==="hat") clothesOn.hat=item.img
     if (item.type==="gloves") clothesOn.gloves=item.img
@@ -149,7 +160,7 @@ function App() {
     if (item.type==="lower") clothesOn.lower=item.img
     if (item.type==="boots") clothesOn.boots=item.img
     setEquipment(clothesOn)         // atnaujinam inventoriaus daiktus
-    setInventory(removedEquipment)  // atnaujinam sandelio daiktus
+    // setInventory(removedEquipment)  // atnaujinam sandelio daiktus
     console.log("uzdeta", clothesOn)
   }
 
@@ -159,6 +170,7 @@ function App() {
     const clothesOff = {...equipment}
        
     const addWarehouse = clothes.find(x => x.img===clothesOff[arg])
+    console.log("What's up, doc?", addWarehouse)
     if(addWarehouse){
       console.log(addWarehouse, clothesOff[arg])
       if (arg==="hat") clothesOff.hat=""
