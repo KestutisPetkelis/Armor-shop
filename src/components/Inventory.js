@@ -2,7 +2,7 @@ import React from 'react'
 import Warehouse from '../pages/Warehouse';
 import Equipment from '../pages/Equipment';
 
-const Inventory = () => {
+const Inventory = ({money}) => {
     const divStyle = {
         width: "90%", 
         minHeight: "400px",
@@ -20,6 +20,7 @@ const Inventory = () => {
     return (
         <div style={divStyle}>
             <h1>Inventory</h1>
+            <h4>Money: {money}</h4>
             <div className='d-flex'>
                 <Warehouse/>
                 <Equipment/>

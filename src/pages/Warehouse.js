@@ -15,7 +15,7 @@ const Warehouse = () => {
         backgroundColor: "lightgrey"
     };
 
-    const {inventory, setItemOn}= useContext(ItemContext)
+    const {inventory, setItemOn, sellItem}= useContext(ItemContext)
     
     // console.log(inventory)
 
@@ -23,11 +23,13 @@ const Warehouse = () => {
         <div style={divStyle} className='flex4'> 
             <h4>Warehouse</h4>
             {inventory.map((x,index) => 
-            <div  onClick = {()=>setItemOn(x.title, index)} className='armorcard bg-blue ali-center' key={index}>
-                <img src={x.img} alt=''/>
+            <div   className='armorcard bg-blue ali-center whouse' key={index}>
+                <img onClick = {()=>setItemOn(x.title, index)} className='w-img' src={x.img} alt=''/>
                 <span>{x.title}</span>
                 <span>{x.type}</span>
                 <span>{x.grade} grade armor</span>
+                <span>Sell price: {x.price/2}</span>
+                <button onClick= {()=>sellItem()}>Sell</button>
             </div>
            )} 
         </div>

@@ -24,7 +24,7 @@ function App() {
     backgroundColor: "aliceblue"
     
   };
-
+  const [money, setMoney] = useState(3000)
   const [inventory, setInventory] = useState([])
   const [equipment, setEquipment] = useState({
     upper: "upper",
@@ -40,91 +40,106 @@ function App() {
       img: "https://lineage.pmfun.com/data/img/armor_t88_u_i00_0.png",
       title: "Imperial Crusader Breastplate",
       type: "upper",
-      grade: "S"
+      grade: "S",
+      price: 200
     },
     {
       img: "https://lineage.pmfun.com/data/img/armor_t88_l_i00_0.png",
       title: "Imperial Crusader Gaiters",
       type: "lower",
-      grade: "S"
+      grade: "S",
+      price: 180
     },
     {
       img: "https://lineage.pmfun.com/data/img/armor_helmet_i00_0.png",
       title: "Imperial Crusader Helmet",
       type: "hat",
-      grade: "S"
+      grade: "S",
+      price: 144
     },
     {
       img: "https://lineage.pmfun.com/data/img/armor_t88_g_i00_0.png",
       title: "Imperial Crusader Gauntlets",
       type: "gloves",
-      grade: "S"
+      grade: "S",
+      price: 72
     },
     {
       img: "https://lineage.pmfun.com/data/img/armor_t88_b_i00_0.png",
       title: "Imperial Crusader Boots",
       type: "boots",
-      grade: "S"
+      grade: "S",
+      price: 72
     },
     {
       img: "https://lineage.pmfun.com/data/img/armor_t74_u_i00_0.png",
       title: "Dark Crystal Breastplate",
       type: "upper",
-      grade: "A"
+      grade: "A",
+      price: 172
     },
     {
       img: "https://lineage.pmfun.com/data/img/armor_t74_l_i00_0.png",
       title: "Dark Crystal Gaiters",
       type: "lower",
-      grade: "A"
+      grade: "A",
+      price: 148
     },
     {
       img: "https://lineage.pmfun.com/data/img/armor_helmet_i02_0.png",
       title: "Dark Crystal Helmet",
       type: "hat",
-      grade: "A"
+      grade: "A",
+      price: 120
     },
     {
       img: "https://lineage.pmfun.com/data/img/armor_t74_g_i00_0.png",
       title: "Dark Crystal Gloves",
       type: "gloves",
-      grade: "A"
+      grade: "A",
+      price: 64
     },
     {
       img: "https://lineage.pmfun.com/data/img/armor_t74_b_i00_0.png",
       title: "Dark Crystal Boots",
       type: "boots",
-      grade: "A"
+      grade: "A",
+      price: 64
     },
     {
       img: "https://lineage.pmfun.com/data/img/armor_t68_u_i00_0.png",
       title: "Blue Wolf Breastplate",
       type: "upper",
-      grade: "B"
+      grade: "B",
+      price: 152
     },
     {
       img: "https://lineage.pmfun.com/data/img/armor_t68_l_i00_0.png",
       title: "Blue Wolf Gaiters",
       type: "lower",
-      grade: "B"
+      grade: "B",
+      price: 130
     },
     {
       img: "https://lineage.pmfun.com/data/img/armor_leather_helmet_i00_0.png",
       title: "Blue Wolf Helmet",
       type: "hat",
-      grade: "B"
+      grade: "B",
+      price: 100
     },
     {
       img: "https://lineage.pmfun.com/data/img/armor_t68_g_i00_0.png",
       title: "Blue Wolf Gloves",
       type: "gloves",
-      grade: "B"
+      grade: "B",
+      price: 50
     },
     {
       img: "https://lineage.pmfun.com/data/img/armor_t68_b_i00_0.png",
       title: "Blue Wolf Boots",
       type: "boots",
-      grade: "B"
+      grade: "B",
+      price: 50
     },
   ]
 
@@ -184,21 +199,23 @@ function App() {
     }
   }
 
-
+  const sellItem=()=>{
+    console.log("click on SELL")
+  }
 
   return (
     <div className="App" style={divStyle}>
       <BrowserRouter>
         <MyContext.Provider value={{clothes, buyItem}}>
-          <ItemContext.Provider value ={{inventory,equipment, setItemOn, removeItem}}>
+          <ItemContext.Provider value ={{inventory,equipment, setItemOn, removeItem, sellItem}}>
             <div className='d-flex ali-center just-evenly sticky'>
               <h4><Link to="/shop"> Shop</Link>  </h4>
               <h4><Link to="/inventory"> Inventory </Link>  </h4>
             </div>
             
             <Routes>
-              <Route path="/shop" element={<Shop />}></Route>
-              <Route path="/inventory" element={<Inventory/>} ></Route>
+              <Route path="/shop" element={<Shop money={money}/>}></Route>
+              <Route path="/inventory" element={<Inventory money={money}/>} ></Route>
             </Routes>
           </ItemContext.Provider>
         </MyContext.Provider>

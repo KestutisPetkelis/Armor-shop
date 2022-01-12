@@ -107,7 +107,7 @@
   margin: 10px;
   padding: 10px;
   display: flex;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 .armorcard:hover{
   border: 2px brown solid;
@@ -117,6 +117,16 @@
   padding: 0 40px;
   min-width: 220px;
   text-align: left;
+}
+button{
+  cursor: pointer;
+  padding: 10px 20px;
+}
+.w-img{
+  cursor: pointer;
+}
+.whouse span{
+  min-width: 120px;
 }
 .equipmentBase{
   background-image: url(https://w7.pngwing.com/pngs/339/103/png-transparent-costume-design-figurine-camael-legendary-creature-lineage-2-legendary-creature-fictional-character-mythical-creature.png);

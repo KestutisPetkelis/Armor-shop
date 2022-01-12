@@ -4,7 +4,7 @@ import Agrade from '../pages/Agrade';
 import Sgrade from '../pages/Sgrade';
 import Bgrade from '../pages/Bgrade';
 
-const Shop = () => {
+const Shop = ({money}) => {
     const divStyle = {
         width: "100%", 
         minHeight: "160px",
@@ -22,6 +22,7 @@ const Shop = () => {
     return (
         <div style={divStyle} >
             <h1>Shop</h1>
+            <h4>Money: {money}</h4>
             <div className='d-flex column'> 
                 <Sgrade />
                 <Agrade/>
